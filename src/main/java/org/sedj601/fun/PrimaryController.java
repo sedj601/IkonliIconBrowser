@@ -53,7 +53,7 @@ public class PrimaryController
             });
         });
     }
-    
+
     public void loadAppData()
     {
         providerList.add("All");
