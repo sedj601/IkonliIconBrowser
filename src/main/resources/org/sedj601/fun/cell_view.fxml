@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="175.0" style="-fx-border-color: black; -fx-border-width: 3px;" type="VBox" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="lblId" alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID">
+      <font>
+         <Font size="20.0" />
+      </font>
+      <graphic>
+         <FontIcon fx:id="fiIdCopy" iconLiteral="antf-copy" />
+      </graphic>
+   </Label>
+   <Label fx:id="lblIconName" alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Name">
+      <graphic>
+         <FontIcon fx:id="fiIconName" iconLiteral="antf-copy" text="" />
+      </graphic>
+   </Label>
+   <Label fx:id="lblEnumName" alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Enum">
+      <graphic>
+         <FontIcon fx:id="fiEnumName" iconLiteral="antf-copy" />
+      </graphic>
+   </Label>
+   <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <FontIcon fx:id="fiIcon" iconLiteral="antf-alert" iconSize="90" />
+   </StackPane>
+   <Label fx:id="lblProvider" alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Provider">
+      <VBox.margin>
+         <Insets bottom="3.0" />
+      </VBox.margin>
+   </Label>
+</fx:root>
