@@ -1,0 +1,1 @@
+java -jar IkonliIconBrowser-1.0-SNAPSHOT.jar 

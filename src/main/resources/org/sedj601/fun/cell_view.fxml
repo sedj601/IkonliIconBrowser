@@ -18,12 +18,12 @@
    </Label>
    <Label fx:id="lblIconName" alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Name">
       <graphic>
-         <FontIcon fx:id="fiIconName" iconLiteral="antf-copy" text="" />
+         <FontIcon fx:id="fiIconNameCopy" iconLiteral="antf-copy" text="" />
       </graphic>
    </Label>
    <Label fx:id="lblEnumName" alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Enum">
       <graphic>
-         <FontIcon fx:id="fiEnumName" iconLiteral="antf-copy" />
+         <FontIcon fx:id="fiEnumNameCopy" iconLiteral="antf-copy" />
       </graphic>
    </Label>
    <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

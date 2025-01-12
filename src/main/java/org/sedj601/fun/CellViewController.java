@@ -1,11 +1,9 @@
 package org.sedj601.fun;
 
-import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -52,6 +50,11 @@ public class CellViewController extends VBox
     public void setFiEnumNameCopyOnMouseClicked(EventHandler<MouseEvent> onMouseClicked)
     {
         fiEnumNameCopy.setOnMouseClicked(onMouseClicked);
+    }
+
+    public void setFiIconIdCopyOnMouseClicked(EventHandler<MouseEvent> onMouseClicked)
+    {
+        fiIdCopy.setOnMouseClicked(onMouseClicked);
     }
 
     public void setFiIcon(String iconCode)

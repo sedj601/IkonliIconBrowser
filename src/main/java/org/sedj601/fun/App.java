@@ -20,6 +20,8 @@ public class App extends Application
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("primary.fxml"));
             Parent root = fxmlLoader.load();
+            PrimaryController primaryController = fxmlLoader.getController();
+            primaryController.initHostServices(getHostServices());
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -27,7 +29,7 @@ public class App extends Application
         }
         catch (IOException e)
         {
-            throw new RuntimeException(e);
+            System.out.println(e.toString());
         }
     }
 
