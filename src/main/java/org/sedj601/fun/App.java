@@ -18,10 +18,10 @@ public class App extends Application
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("primary.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("splashscreenview.fxml"));
             Parent root = fxmlLoader.load();
-            PrimaryController primaryController = fxmlLoader.getController();
-            primaryController.initHostServices(getHostServices());
+            SplashScreenViewController splashScreenViewController = fxmlLoader.getController();
+            splashScreenViewController.initHostServices(getHostServices());
 
             Scene scene = new Scene(root);
             stage.setScene(scene);

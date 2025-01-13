@@ -1,20 +1,12 @@
 package org.sedj601.fun;
 
-import java.util.*;
-import java.util.List;
-
 import javafx.animation.PauseTransition;
-import javafx.application.HostServices;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
@@ -24,8 +16,6 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.controlsfx.control.GridCell;
 import org.controlsfx.control.GridView;
-import org.kordamp.ikonli.Ikon;
-import org.kordamp.ikonli.IkonProvider;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 public class PrimaryController
@@ -40,10 +30,7 @@ public class PrimaryController
     @FXML
     protected void initialize()
     {
-        loadAppData();
-        loadGridView();
-        loadComboBox();
-        configureTextFieldSearch();
+
     }
 
     @FXML
@@ -59,12 +46,11 @@ public class PrimaryController
         createCustomAboutDialog();
     }
 
-    List<IkonItem> ikonItemList = new ArrayList<>();
-    List<String> providerList = new ArrayList<>();
-    ObservableList<IkonItem> gridViewObservableList = FXCollections.observableArrayList();
+
+
     FilteredList<IkonItem> gridViewFilteredList;
-    ObservableList<String> comboBoxObservableList = FXCollections.observableArrayList();
-    HostServices hostServices;
+    DataModel dataModel;
+
 
     public void configureTextFieldSearch()
     {
@@ -85,31 +71,12 @@ public class PrimaryController
         });
     }
 
-    public void loadAppData()
-    {
-        Set<String> providerSet = new TreeSet<>();
-        ServiceLoader<IkonProvider> providers = ServiceLoader.load(IkonProvider.class);
-        for(IkonProvider provider : providers)
-        {
-            for(Object object : provider.getIkon().getEnumConstants())
-            {
-                Ikon tempIkon = (Ikon)object;
-                IkonItem ikonItem = new IkonItem(tempIkon.getCode(), tempIkon.getDescription(), tempIkon.toString(), provider.getIkon().getSimpleName());
-                ikonItemList.add(ikonItem);
 
-                providerSet.add(provider.getIkon().getSimpleName());
-            }
-        }
-
-        providerList.add("All");
-        providerList.addAll(providerSet);
-    }
 
     public void loadComboBox()
     {
-        comboBoxObservableList.addAll(providerList);
-        cbMain.setItems(comboBoxObservableList);
-        cbMain.setValue("All");//todo -> Maybe make this be the last selection when the app ended.
+        cbMain.setItems(dataModel.getComboBoxObservableList());
+        cbMain.setValue("All");
 
         cbMain.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) ->
         {
@@ -130,8 +97,7 @@ public class PrimaryController
 
     public void loadGridView()
     {
-        gridViewObservableList.addAll(ikonItemList);
-        gridViewFilteredList = new  FilteredList<>(gridViewObservableList, p -> true);
+        gridViewFilteredList = new  FilteredList<>(dataModel.getGridViewObservableList(), p -> true);
         gvMain.setItems(gridViewFilteredList);
         gvMain.setHorizontalCellSpacing(2);
         gvMain.setVerticalCellSpacing(2);
@@ -229,12 +195,12 @@ public class PrimaryController
         FontIcon fiGitHub1 = new FontIcon("codicon-github");
         Hyperlink hlGitHub = new Hyperlink("Project");
         hlGitHub.setGraphic(fiGitHub1);
-        hlGitHub.setOnAction(actionEvent -> hostServices.showDocument("https://github.com/sedj601/IkonliIconBrowser"));
+        hlGitHub.setOnAction(actionEvent -> dataModel.getHostServices().showDocument("https://github.com/sedj601/IkonliIconBrowser"));
 
         FontIcon fiGitHub2 = new FontIcon("codicon-github");
         Hyperlink hlMe = new Hyperlink("SedJ601");
         hlMe.setGraphic(fiGitHub2);
-        hlMe.setOnAction(actionEvent -> hostServices.showDocument("https://github.com/sedj601"));
+        hlMe.setOnAction(actionEvent -> dataModel.getHostServices().showDocument("https://github.com/sedj601"));
 
         grid.add(hlGitHub, 0, 0);
         grid.add(hlMe, 0, 1);
@@ -242,11 +208,15 @@ public class PrimaryController
         return grid;
     }
 
-    public void initHostServices(HostServices hostServices)
+    public void initDataModel(DataModel dataModel)
     {
-        if (this.hostServices != null) {
+        if (this.dataModel != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
-        this.hostServices = hostServices ;
+        this.dataModel = dataModel ;
+
+        loadGridView();
+        loadComboBox();
+        configureTextFieldSearch();
     }
 }

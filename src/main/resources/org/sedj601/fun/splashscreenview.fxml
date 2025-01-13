@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1100.0" style="-fx-background-color: #002244;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sedj601.fun.SplashScreenViewController">
+   <children>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
+         <children>
+            <Label text="Ikonli Icon Browser" textFill="WHITE">
+               <font>
+                  <Font size="74.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="150.0" />
+               </VBox.margin>
+            </Label>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <FontIcon fx:id="fiIcon" iconLiteral="antf-account-book" iconSize="100" />
+               </children>
+            </StackPane>
+            <Label fx:id="lblLoadingIconPacks" text="Loading Icons Packs" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</StackPane>
